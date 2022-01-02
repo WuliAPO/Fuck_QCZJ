@@ -7,3 +7,5 @@
 1、打开main.py
 
 2、修改nid、cardNo、openid，其中nid和openid需要自己抓包
+
+3、运行即可
