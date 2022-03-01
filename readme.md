@@ -20,9 +20,10 @@ python3 main.py
 ## 服务器端运行（推荐）
 1、编辑mian.py
 
-2、添加crontab
+2、添加crontab，并保存运行结果
 ```bash
-25 6 * * * python3 main.py
+25 6 * * * [python interpreter path] [source root path] >> [log location] 2>&1
+# eg： 25 6 * * * usr/local/bin/python3 ~/programs/QCZJ-Auotstudy-master/main.py >> ~/programs/QCZJ-Auotstudy-master/log.txt 2>&1
 ```
 将以上内容填进crontab中即可。
 
