@@ -100,12 +100,15 @@ class QCZJ_Youth_Learning:
             print("访问失败")
 
         url2 = 'https://qczj.h5yunban.com/qczj-youth-learning/cgi-bin/user-api/sign-in/records?accessToken=' + access_token + '&date=' + datetime.datetime.now().strftime('%Y-%m')
-        res2 = session.get(url2)
-        if res2.status_code == 200:
-            print("签到记录存在！")
-            print(res2.text)
-        else:
-            print("签到记录失败")
+        try:
+            res2 = session.get(url2)
+            if res2.status_code == 200:
+                print("签到记录存在！")
+                print(res2.text)
+            else:
+                print("签到记录失败")
+        except:
+            print("网络错误，不影响签到")
 
     def read(self,session,access_token):
         session.headers.update({
@@ -168,9 +171,10 @@ class QCZJ_Youth_Learning:
         for i in sequence:
             if i == 1:  #看视频
                 time.sleep(self.sleep_time)
-                if datetime.datetime.now().weekday == '1':
+                print("今天是星期",datetime.datetime.now().weekday()+1)
+                if datetime.datetime.now().weekday() == 0:
                     time.sleep(self.sleep_time)
-                    self.getJoin(session,access_token,current_course,nid,cardNo)
+                    self.getJoin(session,access_token,current_course,self.nid,self.cardNo)
                 else:
                     print("今天不是周一，不看视频")
             if i == 2:    #签到
