@@ -126,7 +126,7 @@ class QCZJ_Youth_Learning:
             #传的data居然是空的
             data = {
                 #'accessToken': access_token,
-                'id': 'C00'+ number,
+                #'id': 'C00'+ number,
             }
             try:
                 res = session.post(url,json = data).json()
